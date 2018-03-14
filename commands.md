@@ -3,6 +3,9 @@ git pull
 
 #paste under <head> at the most bottom just before </head>
 
+<link rel="stylesheet" href="assets/217420326D.gz.css" type="text/css">
+<link rel="stylesheet" href="assets/9jvvjv40-internal-bootstrap.css" type="text/css">
+<link rel="stylesheet" href="assets/vz033906-internal.css" type="text/css">
 <link rel="stylesheet" href="../main-assets/main.css" type="text/css">
 <script type="text/javascript" src="../assets/inserthtml.js"></script>
 
