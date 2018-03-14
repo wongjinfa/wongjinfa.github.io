@@ -42,6 +42,10 @@ to
 
 #at the bottom just before </body>
 
+FIRST
+<div w3-include-html="inserts/footer.html"></div>
+
+THEN
 <script>
     includeHTML()
 </script>
