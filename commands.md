@@ -38,3 +38,8 @@ git pull
 <script>
     includeHTML()
 </script>
+
+# to fix links to files under mainSpace/files/
+
+add "../mainSpace/"
+eg ../mainSpace/files/xxxxxxx.png
