@@ -2,7 +2,7 @@ git pull
 > to update the page
 
 #paste under <head>
-<link rel="stylesheet" href="main-assets/man.css" type="text/css">
+<link rel="stylesheet" href="main-assets/main.css" type="text/css">
 
 #paste under <body>
 
