@@ -376,21 +376,22 @@
             margin-top: -0px;
         }
     </style>
+<<<<<<< HEAD
     <script type="text/javascript" src="assets/11kk95v9.gz.js"></script>
+=======
+    <script type="text/javascript" src="http://www.wikispaces.com/site/editorlibs/en_US/11kk95v9.gz.js"></script>
+    <script type="text/javascript" src="assets/inserthtml.js"></script>
+>>>>>>> 8edef0e6844ab078fd00feb4082d70545b77e0ff
 </head>
 
 <body>
     <div id="js-fixed-header-offset" style="margin-top: 0px;">
-        <!--<?php
-          include_once 'header.php'
-        ?>-->
+      <div w3-include-html="inserts/header.html"></div>
 
         <div class="ws-theme-body">
             <div class="ws-theme-container">
                 <div class="ws-theme-body-inner">
-                    <?php
-                      include 'nav.php'
-                    ?>
+                    <div w3-include-html="inserts/nav.html"></div>
                     <main class="ws-theme-content" role="main">
                         <div class="ws-theme-content-inner">
                             <div class="contentBox">
@@ -585,6 +586,9 @@
     <div class="autogrow-shadow" style="position: absolute; top: -10000px; left: -10000px; font-size: 14px; font-family: arial, helvetica, sans-serif; font-weight: 400; line-height: 20px; resize: none; width: 96px;"></div>
     
     <iframe style="display: none;"></iframe>
+    <script>
+    includeHTML()
+    </script>
 </body>
 
 </html>
