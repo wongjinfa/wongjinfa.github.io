@@ -1,6 +1,13 @@
 git pull
 > to update the page
 
+#change this line in <head></head>
+
+from
+<link rel="stylesheet" href="/static/style.css" type="text/css" />
+to
+<link rel="stylesheet" href="../mainSpace/static/style.css" type="text/css" />
+
 #paste under <head> at the most bottom just before </head>
 
 <link rel="stylesheet" href="../assets/217420326D.gz.css" type="text/css">
