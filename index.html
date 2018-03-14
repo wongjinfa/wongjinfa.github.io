@@ -381,28 +381,15 @@
 
 <body>
     <div id="js-fixed-header-offset" style="margin-top: 0px;">
-        <header class="ws-theme-header" role="banner">
-            <div class="ws-theme-container">
-                <div class="ws-theme-header-inner">
-
-                    <table class="WikiLogoTable WikiElement">
-                        <tbody>
-                            <tr>
-                                <td class="WikiLogoName">
-                                    <a href="https://wongjinfa.github.io/">wongjinfa</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </header>
+        <?php
+          include 'php/header.php'
+        ?>
 
         <div class="ws-theme-body">
             <div class="ws-theme-container">
                 <div class="ws-theme-body-inner">
                     <?php
-                      include 'nav.php'
+                      include 'php/nav.php'
                     ?>
                     <main class="ws-theme-content" role="main">
                         <div class="ws-theme-content-inner">
