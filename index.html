@@ -526,172 +526,13 @@
                             <div class="contentBox">
                                 <div class="innerContentBox" id="WikiContent">
 
-                                    <script type="text/template" id="comment-footer-template">
+                                    
 
-                                        <div class="commentFooter modal-footer">
-                                            <div class="pull-left">
-                                                <button type="button" class="btn btn-default btn-sm previous"><i class="fa fa-arrow-left"></i></button>
-                                                <button type="button" class="btn btn-default btn-sm next"><i class="fa fa-arrow-right"></i></button>
-                                            </div>
-                                            <% if (ws.context.user.canAdministerWiki && !ws.comments.Manager.readOnly) { %>
-                                                <div class="pull-right">
-                                                    <button type="button" class="btn btn-default btn-sm remove">Remove</button>
-                                                </div>
-                                                <% } %>
-                                        </div>
+                                    
 
-                                    </script>
+                                    
 
-                                    <script type="text/template" id="comment-content-template">
-                                        <div class="ws-box commentView">
-                                            <div class="comment-close">
-                                                <button type="button" class="closeme close" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                            </div>
-                                            <div class="commentHeader">
-                                                <p class="ws-stream-meta command-context">
-                                                    <a class="userLink userLinkPicture" href="<%= userCreated.url %>"><img class="userPicture" src="<%= userCreated.imageUrl %>" width="16" height="16"></a>
-                                                    <a href="<%= userCreated.url %>">
-                                                        <%= userCreated.username %>
-                                                    </a>
-                                                    <% if (smartDate == '__live__') { %>
-                                                        <abbr class="timeago" title="<%= (new Date(parseInt(dateCreated, 10) * 1000)).toISOString() %>">
-          <%= dateCreated %>
-        </abbr>
-                                                        <% } else { %>
-                                                            <%- smartDate %>
-                                                                <% } %>
-                                                                    <% if (ws.context.user.canAdministerWiki && ws.comments.Manager.readOnly) { %>
-                                                                        <i class="fa fa-trash-o contextual-command delete ws-tip" title="Delete Comment"></i>
-                                                                        <% } %>
-                                                </p>
-                                            </div>
-
-                                            <div class="commentBody">
-                                                <div class="commentContent">
-                                                    <%= description %>
-                                                </div>
-
-                                                <% for(i = 0; i < replyPages.length; i++) { %>
-                                                    <% for(var j = 0; j < replyPages[i].digests.length; j++) { %>
-                                                        <div class="commentReply" data-id="<%= replyPages[i].digests[j].id %>">
-                                                            <p class="ws-stream-meta command-context">
-                                                                <a class="userLink userLinkPicture" href="<%= replyPages[i].digests[j].userCreated.url %>"><img class="userPicture" src="<%= replyPages[i].digests[j].userCreated.imageUrl %>" width="16" height="16"></a>
-                                                                <a href="<%= replyPages[i].digests[j].userCreated.url %>">
-                                                                    <%= replyPages[i].digests[j].userCreated.username %>
-                                                                </a>
-                                                                <% if (smartDate == '__live__') { %>
-                                                                    <abbr class="timeago" title="<%= (new Date(parseInt(replyPages[i].digests[j].dateCreated, 10) * 1000)).toISOString() %>">
-              <%= new Date(parseInt(replyPages[i].digests[j].dateCreated, 10) * 1000).toLocaleString() %>
-            </abbr>
-                                                                    <% } else { %>
-                                                                        <%- smartDate %>
-                                                                            <% } %>
-                                                                                <% if (ws.context.user.canAdministerWiki) { %>
-                                                                                    <i class="fa fa-trash-o contextual-command delete-reply ws-tip" title="Delete Reply"></i>
-                                                                                    <% } %>
-                                                            </p>
-                                                            <div class="commentContent">
-                                                                <%= replyPages[i].digests[j].body %>
-                                                            </div>
-                                                        </div>
-                                                        <% } %>
-                                                            <% } %>
-
-                                                                <form class="reply commentReply">
-                                                                    <div class="form-group">
-                                                                        <textarea name="reply" placeholder="Reply" class="form-control" /></textarea>
-                                                                    </div>
-                                                                    <div class="btn-toolbar">
-                                                                        <button type="submit" class="btn btn-primary btn-sm" name="go" value="1">Post</button>
-
-                                                                        <% if (ws.context.user.id) { %>
-                                                                            <% if (monitored) { %>
-                                                                                <button type="button" class="btn btn-default btn-sm pull-right toggle-monitor ws-tip active" title="You are monitoring replies."><i class="fa fa-eye"></i></button>
-                                                                                <% } else { %>
-                                                                                    <button type="button" class="btn btn-default btn-sm pull-right toggle-monitor ws-tip" title="You are not monitoring replies."><i class="fa fa-eye"></i></button>
-                                                                                    <% } %>
-                                                                                        <% } %>
-                                                                                            <% if (ws.context.user.canAdministerWiki) { %>
-                                                                                                <% if (locked) { %>
-                                                                                                    <button type="button" class="btn btn-default btn-sm pull-right toggle-lock ws-tip active" title="Replies are not allowed."><i class="fa fa-lock"></i></button>
-                                                                                                    <% } else { %>
-                                                                                                        <button type="button" class="btn btn-default btn-sm pull-right toggle-lock ws-tip" title="Replies are allowed."><i class="fa fa-lock"></i></button>
-                                                                                                        <% } %>
-                                                                                                            <% } %>
-
-                                                                                                                <i class="fa fa-spinner fa-spin spinner pull-right hidden"></i>
-                                                                    </div>
-                                                                </form>
-                                            </div>
-
-                                            <div class="commentFooter modal-footer">
-                                                <div class="pull-left">
-                                                    <button type="button" class="btn btn-default btn-sm previous"><i class="fa fa-arrow-left"></i></button>
-                                                    <button type="button" class="btn btn-default btn-sm next"><i class="fa fa-arrow-right"></i></button>
-                                                </div>
-                                                <% if (ws.context.user.canAdministerWiki && !ws.comments.Manager.readOnly) { %>
-                                                    <div class="pull-right">
-                                                        <button type="button" class="btn btn-default btn-sm remove">Remove</button>
-                                                    </div>
-                                                    <% } %>
-                                            </div>
-
-                                        </div>
-                                    </script>
-
-                                    <script type="text/template" id="comment-composer-template">
-                                        <div class="ws-box commentView">
-                                            <div class="commentComposer">
-                                                <div class="comment-close">
-                                                    &nbsp;
-                                                    <button type="button" class="close closeme" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                                </div>
-                                                <div class="commentHeader">
-                                                    <p class="ws-stream-meta command-context">
-                                                        <img class="userPicture" src="<%= userCreated.imageUrl %>" width="16" height="16">
-                                                        <a href="#" onclick="return false;">
-                                                            <%= userCreated.username %>
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                                <div class="commentBody">
-                                                    <textarea name="comment" class="compose form-control" placeholder="Comment" /></textarea>
-                                                    <br/>
-                                                    <div class="btn-toolbar">
-                                                        <button type="button" class="btn btn-default btn-sm monitored active pull-right" style="margin-left: 6px" onclick="jQuery(this).toggleClass('active')"><i class="fa fa-eye"></i></button>
-                                                        <button type="button" class="btn btn-default btn-sm locked btn-toggle pull-right" onclick="jQuery(this).toggleClass('active')"><i class="fa fa-lock"></i></button>
-                                                        <button type="button" class="btn btn-primary btn-sm closeme">Save</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="commentFooter modal-footer">
-                                                <div class="pull-left">
-                                                    <button type="button" class="btn btn-default btn-sm previous"><i class="fa fa-arrow-left"></i></button>
-                                                    <button type="button" class="btn btn-default btn-sm next"><i class="fa fa-arrow-right"></i></button>
-                                                </div>
-                                                <% if (ws.context.user.canAdministerWiki && !ws.comments.Manager.readOnly) { %>
-                                                    <div class="pull-right">
-                                                        <button type="button" class="btn btn-default btn-sm remove">Remove</button>
-                                                    </div>
-                                                    <% } %>
-                                            </div>
-
-                                        </div>
-                                    </script>
-
-                                    <script type="text/template" id="comment-proxy-template">
-                                        <div class="comment-proxy">
-                                            <span class="commentUser">
-    <% if (userCreated) { %>
-      <img class="userPicture" src="<%= userCreated.imageUrl %>" width="16" height="16">
-    <% } else { %>
-      <img class="userPicture" src="<%= ws.context.user.imageUrlPrefix %>sm.jpg" width="16" height="16">
-    <% } %>
-    </span>
-                                            <span class="commentReplies"><%= 1 + _(replyPages).reduce(function(memo, page){ return memo + page.digests.length; }, 0) %></span>
-                                        </div>
-                                    </script>
+                                    
 
                                     <div class="ws-menu-bar WikiControls WikispacesContent WikispacesBs3">
 
@@ -1183,79 +1024,9 @@
         ws.stream.userCanPostMessage = false;
         ws.stream.hideTimeline = true;
         ws.stream.shareSource = "http:\/\/wongjinfa.wikispaces.com\/page\/shares\/Home";
+        
 
-        (function() {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-
-        jQuery(document).ready(function() {
-            ws.common.addJsonNotices({
-                "warning": [],
-                "error": [],
-                "info": [],
-                "success": []
-            });
-        });
-
-        jQuery(document).ready(function() {
-            ws.common.addNotice("<script type=\"text\/javascript\">function wsDismissBanner() { ws.common.removeNotice();  ws.cookie.set(\"wsAnnouncement\", 1, {expires: 365 * 86400, domain: \".wikispaces.com\"}); return false;}$(\".ui-pnotify-closer\").remove();<\/script><i class=\"fa fa-times fa-fw ws-close\" onclick=\"wsDismissBanner();\"><\/i>It's time for us to say farewell\u2026 Regretfully, we've made the tough decision to close Wikispaces. Find out why, and what will happen, <a href='http:\/\/blog.wikispaces.com' target='_top'>here<a\/>", "warning");
-        });
-
-        jQuery(document).ready(function($) {
-
-            function tipPlacement() {
-                return this.$element.closest('.ws-menu-bar .btn-group').is('.open') ? 'top' : 'bottom';
-            }
-
-            $('.ws-menu-bar').each(function() {
-                var $menuBar = $(this);
-                var $tagDropdown = $menuBar.find('.ws-tag-dropdown-menu');
-                $menuBar.find('.tipme').tooltip({
-                    placement: tipPlacement,
-                    container: '.ws-menu-bar'
-                });
-
-                $menuBar.find('.ws-btn-more').click(ws.common.makeLinkClickFunction(function(e) {
-                    if ($(this).closest('.ws-menu-bar .btn-group').is('.open')) {
-                        ws.common.hideMorePageBar();
-                    } else {
-                        ws.common.showMorePageBar();
-                    }
-                }));
-
-                $menuBar.on('click', '.ws-tag-dropdown-toggle', ws.common.makeLinkClickFunction(function(e) {
-                    if ($(this).closest('.ws-menu-bar .dropdown').is('.open')) {
-                        ws.common.hideTagDropdown();
-                    } else {
-                        ws.common.showTagDropdown();
-                    }
-                }));
-
-                $(document.body).click(function(e) {
-                    var $target = $(e.target);
-                    if (!$target.closest('.ws-more-menu').closest('.ws-menu-bar').is($menuBar) || $target.closest('a').is('.WikispacesDialogLink')) {
-                        ws.common.hideMorePageBar();
-                    }
-                    if ($tagDropdown.length && !$target.closest('.ws-tag-dropdown-menu').is($tagDropdown)) {
-                        ws.common.hideTagDropdown();
-                    }
-                });
-
-            });
-        });
-
-        jQuery(document).ready(function($) {
-            $('.ws-more-menu').on('click', 'a', function(e) {
-                if ($(this).is('.disabled')) {
-                    e.preventDefault();
-                }
-            });
-        });
+        
 
         jQuery(document).ready(function() {
             ws.editor.canEdit = false;
@@ -1306,27 +1077,7 @@
     <!-- w22 315 wki:188:238(5) dql:95:133(19) mem:2:15(46) mog:7:12(3) tot:315:315(1) -->
 
     <div class="autogrow-shadow" style="position: absolute; top: -10000px; left: -10000px; font-size: 14px; font-family: arial, helvetica, sans-serif; font-weight: 400; line-height: 20px; resize: none; width: 96px;"></div>
-    <div class="ui-pnotify WikispacesContent WikispacesBs3" style="opacity: 1; display: block; right: 25px; top: 25px; cursor: auto;">
-        <div class="alert ui-pnotify-container alert-warning ui-pnotify-shadow" style="min-height: 16px;">
-            <div class="ui-pnotify-icon"><span class="fa fa-exclamation-circle"></span></div>
-            <div class="ui-pnotify-sticker" style="cursor: pointer; visibility: hidden; display: none;"><span class="fa fa-pause" title="Stick"></span></div>
-            <h4 class="ui-pnotify-title hidden" style="display: none;"></h4>
-            <div class="ui-pnotify-text">
-                <script type="text/javascript">
-                    function wsDismissBanner() {
-                        ws.common.removeNotice();
-                        ws.cookie.set("wsAnnouncement", 1, {
-                            expires: 365 * 86400,
-                            domain: ".wikispaces.com"
-                        });
-                        return false;
-                    }
-                    $(".ui-pnotify-closer").remove();
-                </script><i class="fa fa-times fa-fw ws-close" onclick="wsDismissBanner();"></i>It's time for us to say farewell… Regretfully, we've made the tough decision to close Wikispaces. Find out why, and what will happen, <a href="http://blog.wikispaces.com" target="_top">here</a>
-                <a></a>
-            </div>
-        </div>
-    </div>
+    
     <iframe style="display: none;"></iframe>
 </body>
 
