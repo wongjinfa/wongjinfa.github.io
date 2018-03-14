@@ -20,7 +20,6 @@ to
 
 <div id="js-fixed-header-offset" style="margin-top: 0px;">
     <div w3-include-html="../inserts/header.html"></div>
-
         <div class="ws-theme-body">
             <div class="ws-theme-container">
                 <div class="ws-theme-body-inner">
@@ -29,6 +28,10 @@ to
                         <div class="ws-theme-content-inner">
                             <div class="contentBox">
                                 <div class="innerContentBox" id="WikiContent">
+
+                                ...
+                                (preexisting content)
+                                ...
 
                                 </div>
                             </div>
@@ -43,7 +46,7 @@ to
 #at the bottom just before </body>
 
 FIRST
-<div w3-include-html="inserts/footer.html"></div>
+<div w3-include-html="../inserts/footer.html"></div>
 
 THEN
 <script>
