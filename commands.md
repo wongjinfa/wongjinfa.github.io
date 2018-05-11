@@ -51,9 +51,7 @@ FIRST
 <div w3-include-html="../inserts/footer.html"></div>
 
 THEN
-<script>
-    includeHTML()
-</script>
+<script>includeHTML()</script>
 
 # to fix links to files under mainSpace/files/
 
