@@ -16,6 +16,8 @@ to
 <link rel="stylesheet" href="../main-assets/main.css" type="text/css">
 <script type="text/javascript" src="../assets/inserthtml.js"></script>
 
+<base href="https://wongjinfa.github.io/">
+
 #paste under <body>
 
 <div id="js-fixed-header-offset" style="margin-top: 0px;">
